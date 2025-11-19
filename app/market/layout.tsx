@@ -40,12 +40,12 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
         <Sidebar variant="inset" collapsible="icon" className="border-r border-white/10 bg-black">
           <SidebarHeader className="border-b border-white/10 p-4 bg-black">
             <Link href="/market" className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center hover:opacity-80 transition-opacity">
-              <div className="relative w-8 h-8 grayscale contrast-125">
+              <div className="relative w-8 h-8">
                 <Image 
-                  src="/logo.jpg" 
+                  src="/placeholder-logo.svg" 
                   alt="Vantage Logo" 
                   fill 
-                  className="object-contain"
+                  className="object-contain invert"
                   priority
                 />
               </div>
@@ -139,9 +139,9 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
                   href="https://pump.fun/coin/EMyXs726t4oUL7yCH9kkXCpWp3SdpWRopuewaVYhpump"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:block px-4 py-1.5 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-neon-green/50 transition-all duration-300 group"
+                  className="hidden sm:block px-3 py-1.5 bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-full"
                 >
-                  <span className="text-[10px] font-bold font-mono text-white tracking-wider group-hover:text-neon-green transition-colors">PUMP.FUN_GATEWAY</span>
+                  <span className="text-[10px] font-bold font-sans tracking-wide">PUMP.FUN</span>
                 </a>
               </div>
             </div>
