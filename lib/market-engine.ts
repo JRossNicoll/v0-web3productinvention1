@@ -735,8 +735,8 @@ export class MarketEngine {
       const volatilityMultiplier = 1 + (Math.abs(percentChange) * 100)
       const randomVariance = 0.5 + Math.random()
       
-      // 6 assets * 2.5 * 30 ticks/min * 2 min = ~900 volume every 2 mins
-      const baseIncrement = 1 + Math.random() * 3
+      // Previous: ~900 volume every 2 mins. New: ~270 volume every 2 mins.
+      const baseIncrement = (1 + Math.random() * 3) * 0.3
       
       const volumeIncrement = baseIncrement * randomVariance * volatilityMultiplier
       
