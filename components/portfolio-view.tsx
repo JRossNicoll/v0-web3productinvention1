@@ -105,20 +105,21 @@ export function PortfolioView() {
     }
   }).filter(Boolean)
 
-  // Add $VANT balance
+  const VANT_PRICE = 0.00001650
+  
   const vantAsset = {
     id: "$VANT",
     name: "Vantage Token",
     symbol: "$VANT",
-    image: "/placeholder.svg?key=g4j9e",
-    quantity: realVantBalance, // Use real fetched balance
-    avgPrice: 1,
-    currentPrice: 1,
-    value: realVantBalance, // Use real fetched balance
+    image: "/vantage-token.jpg", // Updated to use the correct token image
+    quantity: realVantBalance, 
+    avgPrice: VANT_PRICE, // Updated to real price
+    currentPrice: VANT_PRICE, // Updated to real price
+    value: realVantBalance * VANT_PRICE, // Calculate real value
     change24h: 0,
     pnl: 0,
     pnlPercent: 0,
-    amount: realVantBalance, // Use real fetched balance
+    amount: realVantBalance,
     change: 0,
     allocation: 0
   }
