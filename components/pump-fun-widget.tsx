@@ -24,7 +24,7 @@ export function PumpFunWidget() {
           {/* Button */}
           <div className="relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full shadow-2xl group-hover:shadow-[0_0_40px_rgba(0,200,255,0.5)] transition-all duration-300 group-hover:scale-105">
             <TrendingUp className="w-5 h-5 text-white" />
-            <span className="text-sm font-bold font-mono text-white tracking-wider">TRADE $VANTAGE</span>
+            <span className="text-sm font-bold font-mono text-white tracking-wider">TRADE $VANT</span>
           </div>
         </div>
       </button>
@@ -38,7 +38,7 @@ export function PumpFunWidget() {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
-                  <span className="text-sm font-bold font-mono text-white tracking-wider">VANTAGE NATIVE TOKEN</span>
+                  <span className="text-sm font-bold font-mono text-white tracking-wider">VANT NATIVE TOKEN</span>
                 </div>
                 <div className="px-3 py-1 border border-white/20 bg-white/5 rounded">
                   <span className="text-[10px] font-mono text-white/60 tracking-wider">PUMP.FUN</span>

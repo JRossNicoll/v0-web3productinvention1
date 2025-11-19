@@ -265,13 +265,6 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
               </div>
             </div>
 
-            <div className="bg-neon-blue/5 border border-neon-blue/20 rounded-xl p-3 flex items-start gap-3">
-              <Info className="w-4 h-4 text-neon-blue mt-0.5 shrink-0" />
-              <div className="text-[10px] text-neon-blue/80 font-medium leading-relaxed">
-                Real Solana transactions. You pay with {NATIVE_TOKEN_SYMBOL} tokens which are sent to treasury: 7p23...tpeD
-              </div>
-            </div>
-
             <Button 
               className="w-full font-bold h-12 text-sm rounded-xl shadow-lg transition-all duration-300 tracking-wide bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-0.5"
               onClick={handleTrade}

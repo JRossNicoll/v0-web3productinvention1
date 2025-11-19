@@ -18,7 +18,7 @@ export function NativeCoinBanner() {
           
           <div className="space-y-2">
             <div className="flex items-center gap-3">
-              <h3 className="text-lg font-bold font-mono text-white">$VANTAGE NATIVE TOKEN</h3>
+              <h3 className="text-lg font-bold font-mono text-white">$VANT NATIVE TOKEN</h3>
               <div className="px-2 py-0.5 rounded border border-neon-green/30 bg-neon-green/10">
                 <span className="text-[10px] font-mono font-bold text-neon-green tracking-wider">LIVE</span>
               </div>
