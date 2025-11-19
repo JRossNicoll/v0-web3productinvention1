@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Activity, Users, DollarSign, BarChart3, ChevronRight, Twitter } from 'lucide-react'
+import { Activity, Users, DollarSign, BarChart3, ChevronRight, Twitter, Crown } from 'lucide-react'
 import { 
   Sidebar, 
   SidebarContent, 
@@ -20,12 +20,15 @@ import { usePathname } from 'next/navigation'
 import { GasPrice } from "@/components/gas-price"
 import Image from "next/image"
 import { PumpFunWidget } from "@/components/pump-fun-widget"
+import { GodModeToggle } from "@/components/god-mode-toggle"
+import { IntelligenceFeed } from "@/components/intelligence-feed"
 
 const MENU_ITEMS = [
   { icon: Activity, label: "Market Overview", href: "/market" },
   { icon: BarChart3, label: "Assets", href: "/market?view=assets" },
   { icon: Users, label: "Leaderboard", href: "/market?view=leaderboard" },
   { icon: DollarSign, label: "Portfolio", href: "/market?view=portfolio" },
+  { icon: Crown, label: "Vantage Prime", href: "/market?view=prime", badge: "WAITLIST" },
 ]
 
 export default function MarketLayout({ children }: { children: React.ReactNode }) {
@@ -68,6 +71,11 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
                     <Link href={item.href} className="flex items-center gap-3 w-full">
                       <item.icon className="w-[18px] h-[18px]" strokeWidth={2} />
                       <span className="font-medium">{item.label}</span>
+                      {item.badge && (
+                        <span className="ml-auto text-[9px] font-bold bg-neon-blue/20 text-neon-blue px-1.5 py-0.5 rounded border border-neon-blue/20">
+                          {item.badge}
+                        </span>
+                      )}
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -119,10 +127,21 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
             <div className="flex items-center gap-2">
               <div className="w-1 h-5 bg-white rounded-full" />
               <span className="font-bold text-sm tracking-tight font-mono">MARKET TERMINAL</span>
+              <div className="hidden md:flex items-center gap-1.5 ml-4 px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-[9px] font-bold text-emerald-500 tracking-wider">INSTITUTIONAL LIQUIDITY: ONLINE</span>
+              </div>
             </div>
 
             <div className="ml-auto flex items-center gap-6">
               <div className="flex items-center gap-4 lg:gap-6 text-[11px] font-mono">
+                <div className="hidden md:block">
+                  <GodModeToggle />
+                </div>
+                
                 <div className="hidden sm:block">
                   <GasPrice />
                 </div>
@@ -145,6 +164,7 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
         </SidebarInset>
         
         <PumpFunWidget />
+        <IntelligenceFeed />
       </div>
     </SidebarProvider>
   )

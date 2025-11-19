@@ -28,6 +28,10 @@ const chartConfig = {
   ema: {
     label: "EMA (50)",
     color: "#f472b6", // pink-400
+  },
+  accumulation: {
+    label: "Accumulation Zone",
+    color: "rgba(0, 243, 255, 0.1)",
   }
 }
 
@@ -35,7 +39,7 @@ export function MarketChart({ assetId }: { assetId?: string }) {
   const [timeframe, setTimeframe] = useState<"1H" | "1D" | "1W">("1D")
   const [showSMA, setShowSMA] = useState(false)
   const [showEMA, setShowEMA] = useState(false)
-  const { assets, getAsset } = useMarket()
+  const { assets, getAsset, isGodMode } = useMarket()
   
   const data = useMemo(() => {
     let ohlcv = []
@@ -52,6 +56,8 @@ export function MarketChart({ assetId }: { assetId?: string }) {
     const sma20 = calculateSMA(prices, 20)
     const ema50 = calculateEMA(prices, 50)
 
+    const accumulationZone = prices.map(p => p * (0.95 + Math.random() * 0.02))
+
     return ohlcv.map((candle, i) => ({
       date: new Date(candle.time).toLocaleDateString('en-US', { 
         month: 'short', 
@@ -66,6 +72,7 @@ export function MarketChart({ assetId }: { assetId?: string }) {
       volume: candle.volume,
       sma: sma20[i],
       ema: ema50[i],
+      accumulation: accumulationZone[i],
       high: candle.high,
       low: candle.low,
       open: candle.open
@@ -135,6 +142,10 @@ export function MarketChart({ assetId }: { assetId?: string }) {
                 <stop offset="5%" stopColor="hsl(var(--neon-blue))" stopOpacity={0.2}/>
                 <stop offset="95%" stopColor="hsl(var(--neon-blue))" stopOpacity={0}/>
               </linearGradient>
+              <linearGradient id="colorAccumulation" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="hsl(var(--neon-blue))" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="hsl(var(--neon-blue))" stopOpacity={0.05}/>
+              </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
             <XAxis 
@@ -190,6 +201,17 @@ export function MarketChart({ assetId }: { assetId?: string }) {
               radius={[2, 2, 0, 0]}
             />
             
+            {isGodMode && (
+              <Area
+                yAxisId="left"
+                type="monotone"
+                dataKey="accumulation"
+                stroke="none"
+                fill="url(#colorAccumulation)"
+                fillOpacity={0.2}
+              />
+            )}
+
             <>
               {/* Wicks */}
               <Bar 

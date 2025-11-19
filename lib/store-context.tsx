@@ -22,6 +22,8 @@ interface MarketContextType {
   markNotificationRead: (notificationId: string) => void
   markAllNotificationsRead: () => void
   processTrade: (assetId: string, amount: number, side: 'buy' | 'sell') => void
+  isGodMode: boolean
+  toggleGodMode: () => void
 }
 
 const MarketContext = createContext<MarketContextType | null>(null)
@@ -30,6 +32,7 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
   const [assets, setAssets] = useState<Asset[]>([])
   const [userState, setUserState] = useState<UserState>(marketEngine.getUserState())
   const [isLoading, setIsLoading] = useState(true)
+  const [isGodMode, setIsGodMode] = useState(false)
 
   useEffect(() => {
     // Initial load
@@ -107,6 +110,8 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
 
   const getAsset = (id: string) => marketEngine.getAsset(id)
 
+  const toggleGodMode = () => setIsGodMode(prev => !prev)
+
   return (
     <MarketContext.Provider value={{ 
       assets, 
@@ -125,7 +130,9 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
       deleteAlert,
       markNotificationRead,
       markAllNotificationsRead,
-      processTrade
+      processTrade,
+      isGodMode,
+      toggleGodMode
     }}>
       {children}
     </MarketContext.Provider>

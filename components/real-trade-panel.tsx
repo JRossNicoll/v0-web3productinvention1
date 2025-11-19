@@ -8,11 +8,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
-import { Wallet, ArrowDownUp, Loader2, ExternalLink, Info } from 'lucide-react'
+import { Wallet, ArrowDownUp, Loader2, ExternalLink, Info, ShieldCheck } from 'lucide-react'
 import { SolanaTradeService } from "@/lib/services/solana-trade-service"
 import { NumberInput } from "@/components/ui/number-input"
 import { useToast } from "@/hooks/use-toast"
 import { useMarket } from "@/lib/store-context"
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
 
 const NATIVE_TOKEN_SYMBOL = "$VANT"
 
@@ -22,6 +24,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
   const [activeTab, setActiveTab] = useState("buy")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [vantBalance, setVantBalance] = useState(0)
+  const [darkPoolRouting, setDarkPoolRouting] = useState(false)
   
   const { publicKey, signTransaction } = useWallet()
   const { connection } = useConnection()
@@ -98,7 +101,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
         duration: 5000,
       })
       
-      const result = await tradeService.buyAsset(publicKey, signTransaction, vantAmount)
+      const result = await tradeService.buyAsset(publicKey, signTransaction, vantAmount, darkPoolRouting)
       
       if (result.success) {
         processTrade(symbol, vantAmount, 'buy')
@@ -262,6 +265,20 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
                 <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleSliderChange([50])}>50%</span>
                 <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleSliderChange([75])}>75%</span>
                 <span className="cursor-pointer hover:text-white transition-colors" onClick={() => handleSliderChange([100])}>100%</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between bg-white/5 p-2 rounded-lg border border-white/5">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-3 h-3 text-muted-foreground" />
+                <div className="flex flex-col">
+                  <Label className="text-[10px] font-bold text-white uppercase tracking-wider">Dark Pool Routing</Label>
+                  <span className="text-[9px] text-muted-foreground">Hidden execution</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] font-bold text-neon-blue bg-neon-blue/10 px-1.5 py-0.5 rounded border border-neon-blue/20">PRIME ONLY</span>
+                <Switch disabled checked={darkPoolRouting} className="scale-75 data-[state=checked]:bg-neon-blue" onClick={() => setDarkPoolRouting(!darkPoolRouting)} />
               </div>
             </div>
 
