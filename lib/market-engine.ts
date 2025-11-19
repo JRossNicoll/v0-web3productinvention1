@@ -588,11 +588,11 @@ export class MarketEngine {
       parsed.forEach((savedAsset: Asset) => {
         const initialAsset = INITIAL_ASSETS.find(a => a.id === savedAsset.id)
         
-        const baseVolume = Math.random() * 50
+        // Target: $40k / 150 / 6 assets = ~44 per asset
+        const baseVolume = 30 + Math.random() * 20 // 30-50 range
         
-        // If the saved volume is huge (old data), reset it. Otherwise keep growing it.
         let volume = savedAsset.volume
-        if (volume > 50000) { 
+        if (volume > 100) { 
             volume = baseVolume
         }
 
@@ -628,7 +628,7 @@ export class MarketEngine {
         const trend = (Math.random() - 0.5) * 0.002
         this.assetTrends.set(a.id, trend)
 
-        const startVolume = Math.random() * 50
+        const startVolume = 30 + Math.random() * 20
 
         const candles = this.generateInitialCandles(a.price, startVolume, a.id)
         
@@ -735,7 +735,8 @@ export class MarketEngine {
       const volatilityMultiplier = 1 + (Math.abs(percentChange) * 100)
       const randomVariance = 0.5 + Math.random()
       
-      const baseIncrement = 5 + Math.random() * 10
+      // 6 assets * 2.5 * 30 ticks/min * 2 min = ~900 volume every 2 mins
+      const baseIncrement = 1 + Math.random() * 3
       
       const volumeIncrement = baseIncrement * randomVariance * volatilityMultiplier
       
