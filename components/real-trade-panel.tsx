@@ -29,6 +29,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
   const { processTrade } = useMarket()
   
   const tradeService = new SolanaTradeService(connection.rpcEndpoint)
+  const isBuy = activeTab === "buy"
 
   useEffect(() => {
     if (!publicKey) return
@@ -67,7 +68,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
       return
     }
     
-    if (activeTab === "sell") {
+    if (!isBuy) {
       toast({
         title: "Sell not available",
         description: "Selling requires backend treasury integration",
@@ -194,16 +195,15 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
             <TabsTrigger 
               value="sell" 
               className="data-[state=active]:bg-red-500 data-[state=active]:text-white font-bold rounded-lg transition-all duration-300 text-xs tracking-wide hover:bg-red-500/20"
-              disabled
             >
-              SELL (SOON)
+              SELL
             </TabsTrigger>
           </TabsList>
           
           <div className="space-y-5">
             <div className="space-y-2">
               <div className="flex justify-between text-[10px] text-muted-foreground font-medium uppercase tracking-wider">
-                <span>Pay with {NATIVE_TOKEN_SYMBOL}</span>
+                <span>{isBuy ? `Pay with ${NATIVE_TOKEN_SYMBOL}` : `Sell ${symbol}`}</span>
                 <span className="flex items-center gap-1.5 text-white/80 font-mono">
                   <Wallet className="w-3 h-3" /> 
                   {vantBalance.toFixed(4)} {NATIVE_TOKEN_SYMBOL}
@@ -218,7 +218,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
                   step={10000}
                 />
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-muted-foreground pointer-events-none font-mono">
-                  {NATIVE_TOKEN_SYMBOL}
+                  {isBuy ? NATIVE_TOKEN_SYMBOL : symbol}
                 </div>
               </div>
             </div>
@@ -231,7 +231,7 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
 
             <div className="space-y-2">
               <div className="flex justify-between text-[10px] text-muted-foreground font-medium uppercase tracking-wider">
-                <span>Receive {symbol}</span>
+                <span>{isBuy ? `Receive ${symbol}` : `Receive ${NATIVE_TOKEN_SYMBOL}`}</span>
                 <span className="font-mono">Price: {price.toFixed(2)} {NATIVE_TOKEN_SYMBOL}</span>
               </div>
               <div className="relative">
@@ -239,11 +239,11 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
                   type="number" 
                   placeholder="0.00" 
                   className="bg-black/20 border-white/10 text-right pr-24 text-lg font-mono h-12 rounded-xl focus:border-neon-blue/50 transition-all hover:border-white/20"
-                  value={amount ? (parseFloat(amount) / price).toFixed(4) : ""}
+                  value={amount ? (isBuy ? parseFloat(amount) / price : parseFloat(amount) * price).toFixed(4) : ""}
                   readOnly
                 />
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-muted-foreground font-mono">
-                  {symbol}
+                  {isBuy ? symbol : NATIVE_TOKEN_SYMBOL}
                 </div>
               </div>
             </div>
@@ -266,14 +266,18 @@ export function RealTradePanel({ symbol, price }: { symbol: string, price: numbe
             </div>
 
             <Button 
-              className="w-full font-bold h-12 text-sm rounded-xl shadow-lg transition-all duration-300 tracking-wide bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-0.5"
+              className={`w-full font-bold h-12 text-sm rounded-xl shadow-lg transition-all duration-300 tracking-wide ${
+                isBuy 
+                  ? "bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)]" 
+                  : "bg-red-500 text-white hover:bg-red-600 shadow-[0_0_20px_-5px_rgba(239,68,68,0.5)] hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.6)]"
+              } hover:-translate-y-0.5`}
               onClick={handleTrade}
               disabled={isSubmitting || !amount || parseFloat(amount) <= 0}
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 animate-spin mr-2" />
               ) : null}
-              BUY WITH {NATIVE_TOKEN_SYMBOL}
+              {isBuy ? `BUY WITH ${NATIVE_TOKEN_SYMBOL}` : `SELL ${symbol}`}
             </Button>
           </div>
         </Tabs>

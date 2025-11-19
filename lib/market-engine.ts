@@ -10,8 +10,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "Crypto",
     price: 1204.50,
     change: 12.4,
-    volume: 2400000,
-    marketCap: 1420000, // Reduced from 142M to 1.42M
+    volume: 1250,
+    marketCap: 187500, 
     score: 892,
     holders: 14520,
     sectorDominance: 18.5,
@@ -86,8 +86,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "AI Researcher",
     price: 892.00,
     change: 5.1,
-    volume: 1800000,
-    marketCap: 980000, // Reduced from 98M to 980k
+    volume: 850,
+    marketCap: 127500,
     score: 847,
     holders: 8940,
     sectorDominance: 12.2,
@@ -152,8 +152,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "Tech Mogul",
     price: 445.20,
     change: -2.3,
-    volume: 890000,
-    marketCap: 520000, // Reduced from 52M to 520k
+    volume: 420,
+    marketCap: 63000,
     score: 782,
     holders: 12400,
     sectorDominance: 8.4,
@@ -237,8 +237,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "Innovator",
     price: 342.80,
     change: 8.7,
-    volume: 1200000,
-    marketCap: 410000, // Reduced from 41M to 410k
+    volume: 650,
+    marketCap: 97500,
     score: 756,
     holders: 25600,
     sectorDominance: 15.1,
@@ -312,8 +312,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "Chip Architect",
     price: 288.50,
     change: 3.2,
-    volume: 650000,
-    marketCap: 340000, // Reduced from 34M to 340k
+    volume: 320,
+    marketCap: 48000,
     score: 721,
     holders: 5200,
     sectorDominance: 22.8,
@@ -396,8 +396,8 @@ const INITIAL_ASSETS: Asset[] = [
     category: "Investor",
     price: 198.90,
     change: -1.5,
-    volume: 420000,
-    marketCap: 230000, // Reduced from 23M to 230k
+    volume: 150,
+    marketCap: 22500,
     score: 689,
     holders: 3100,
     sectorDominance: 4.2,
@@ -592,7 +592,7 @@ export class MarketEngine {
         
         // If the saved volume is huge (old data), reset it. Otherwise keep growing it.
         let volume = savedAsset.volume
-        if (volume > 100000000) { 
+        if (volume > 50000) { 
             volume = baseVolume
         }
 
