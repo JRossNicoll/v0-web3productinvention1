@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Deep Obsidian Theme - Premium Finance Vibe */
+  --background: oklch(0.01 0 0); /* Pure Black for Ethena vibe */
+  --foreground: oklch(0.98 0 0);
+  
+  --card: oklch(0.02 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  
+  --popover: oklch(0.02 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  
+  --primary: oklch(0.7 0.15 240); /* More electric/cyan blue */
+  --primary-foreground: oklch(0.05 0.05 240);
+  
+  --secondary: oklch(0.12 0.02 240);
+  --secondary-foreground: oklch(0.98 0 0);
+  
+  --muted: oklch(0.12 0.02 240);
+  --muted-foreground: oklch(0.6 0.02 240);
+  
+  --accent: oklch(0.12 0.02 240);
+  --accent-foreground: oklch(0.98 0 0);
+  
+  --destructive: oklch(0.45 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  
+  --border: oklch(0.15 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.7 0.15 240);
+  
+  --radius: 0.5rem; /* Sharper corners like Ethena */
+  
+  /* VANTAGE Premium Tokens */
+  --neon-blue: oklch(0.7 0.15 240);
+  --neon-green: oklch(0.75 0.15 150);
+  --neon-purple: oklch(0.65 0.2 290);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(5, 5, 5, 0.6);
+}
+
+.dark {
+  --background: oklch(0.01 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.02 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.02 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.7 0.15 240);
+  --primary-foreground: oklch(0.05 0.05 240);
+  --secondary: oklch(0.12 0.02 240);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.12 0.02 240);
+  --muted-foreground: oklch(0.6 0.02 240);
+  --accent: oklch(0.12 0.02 240);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.45 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.15 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.7 0.15 240);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom VANTAGE Colors */
+  --color-vantage-black: #050505;
+  --color-vantage-gray: #111111;
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-green: var(--neon-green);
+  --color-neon-purple: var(--neon-purple);
+  
+  /* Fluid transition timing */
+  --ease-fluid: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-neon-blue/30 selection:text-neon-blue;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Custom Scrollbar - Sleek & Minimal */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 9999px;
+    transition: background 0.2s;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-black/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  
+  .glass-card {
+    @apply bg-[#0A0A0A]/60 backdrop-blur-md border border-white/5 shadow-lg transition-all duration-300 hover:bg-[#0A0A0A]/80 hover:border-white/10 hover:shadow-xl;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 15px var(--neon-blue);
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 10px -2px var(--neon-blue);
+  }
+  
+  .hover-fluid {
+    @apply transition-all duration-300 ease-fluid hover:-translate-y-0.5;
+  }
+  
+  .animate-enter {
+    @apply animate-in fade-in zoom-in-95 duration-300 ease-out;
+  }
+
+  /* Hide default number input spinners */
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
