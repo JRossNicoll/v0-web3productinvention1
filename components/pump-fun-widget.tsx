@@ -17,15 +17,9 @@ export function PumpFunWidget() {
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 z-50 group"
       >
-        <div className="relative">
-          {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity animate-pulse" />
-          
-          {/* Button */}
-          <div className="relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full shadow-2xl group-hover:shadow-[0_0_40px_rgba(0,200,255,0.5)] transition-all duration-300 group-hover:scale-105">
-            <TrendingUp className="w-5 h-5 text-white" />
-            <span className="text-sm font-bold font-mono text-white tracking-wider">TRADE $VANT</span>
-          </div>
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-white text-black border border-white/20 hover:bg-zinc-200 transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] rounded-full">
+          <TrendingUp className="w-3.5 h-3.5" />
+          <span className="text-[11px] font-bold tracking-wide font-sans">TRADE $VANT</span>
         </div>
       </button>
 

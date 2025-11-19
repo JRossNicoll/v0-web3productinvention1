@@ -24,11 +24,11 @@ import { GodModeToggle } from "@/components/god-mode-toggle"
 import { IntelligenceFeed } from "@/components/intelligence-feed"
 
 const MENU_ITEMS = [
-  { icon: Activity, label: "Market Overview", href: "/market" },
-  { icon: BarChart3, label: "Assets", href: "/market?view=assets" },
-  { icon: Users, label: "Leaderboard", href: "/market?view=leaderboard" },
-  { icon: DollarSign, label: "Portfolio", href: "/market?view=portfolio" },
-  { icon: Crown, label: "Vantage Prime", href: "/market?view=prime", badge: "WAITLIST" },
+  { icon: Activity, label: "MARKET_OVERVIEW", href: "/market" },
+  { icon: BarChart3, label: "ASSET_LIST", href: "/market?view=assets" },
+  { icon: Users, label: "LEADERBOARD", href: "/market?view=leaderboard" },
+  { icon: DollarSign, label: "PORTFOLIO", href: "/market?view=portfolio" },
+  { icon: Crown, label: "VANTAGE_PRIME", href: "/market?view=prime", badge: "WAITLIST" },
 ]
 
 export default function MarketLayout({ children }: { children: React.ReactNode }) {
@@ -36,13 +36,11 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen bg-background text-foreground flex w-full">
-        <Sidebar variant="inset" collapsible="icon">
-          <SidebarHeader className="border-b border-white/10 p-5 bg-gradient-to-b from-white/[0.03] to-transparent">
-            {/* Wrapped logo and text in Link to /market */}
+      <div className="min-h-screen bg-black text-foreground flex w-full font-mono selection:bg-neon-green/20 selection:text-neon-green">
+        <Sidebar variant="inset" collapsible="icon" className="border-r border-white/10 bg-black">
+          <SidebarHeader className="border-b border-white/10 p-4 bg-black">
             <Link href="/market" className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center hover:opacity-80 transition-opacity">
-              {/* Replaced Shield icon with Image component using the new logo file */}
-              <div className="relative w-8 h-8">
+              <div className="relative w-8 h-8 grayscale contrast-125">
                 <Image 
                   src="/logo.jpg" 
                   alt="Vantage Logo" 
@@ -52,28 +50,27 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
                 />
               </div>
               <div className="group-data-[collapsible=icon]:hidden">
-                <div className="font-bold text-base tracking-tight text-white">VANTAGE</div>
-                <div className="text-[9px] font-mono tracking-widest text-muted-foreground uppercase">Exchange Platform</div>
+                <div className="font-semibold text-lg tracking-tight text-white font-sans">Vantage</div>
               </div>
             </Link>
           </SidebarHeader>
           
-          <SidebarContent className="p-3">
-            <SidebarMenu className="gap-1">
+          <SidebarContent className="p-0 bg-black">
+            <SidebarMenu className="gap-0">
               {MENU_ITEMS.map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton
                     asChild
                     isActive={item.href === "/market" ? pathname === "/market" : pathname.startsWith(item.href)}
                     tooltip={item.label}
-                    className="h-10 text-[13px] font-medium data-[active=true]:bg-white/[0.06] data-[active=true]:text-white hover:bg-white/[0.03] transition-all"
+                    className="h-12 text-[11px] font-mono tracking-wider data-[active=true]:bg-white/[0.03] data-[active=true]:text-neon-green data-[active=true]:border-l-2 data-[active=true]:border-neon-green hover:bg-white/[0.02] transition-none rounded-none border-l-2 border-transparent"
                   >
                     <Link href={item.href} className="flex items-center gap-3 w-full">
-                      <item.icon className="w-[18px] h-[18px]" strokeWidth={2} />
+                      <item.icon className="w-4 h-4" strokeWidth={1.5} />
                       <span className="font-medium">{item.label}</span>
                       {item.badge && (
-                        <span className="ml-auto text-[9px] font-bold bg-neon-blue/20 text-neon-blue px-1.5 py-0.5 rounded border border-neon-blue/20">
-                          {item.badge}
+                        <span className="ml-auto text-[9px] font-bold text-neon-blue px-1 border border-neon-blue/30 rounded-none">
+                          [{item.badge}]
                         </span>
                       )}
                     </Link>
@@ -83,33 +80,32 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
             </SidebarMenu>
           </SidebarContent>
 
-          <SidebarSeparator />
+          <SidebarSeparator className="bg-white/10" />
 
-          <SidebarFooter className="p-4 bg-gradient-to-t from-black/40 to-transparent">
+          <SidebarFooter className="p-4 bg-black border-t border-white/10">
             <div className="flex flex-col gap-4 group-data-[collapsible=icon]:hidden">
-              {/* Stats Block */}
-              <div className="rounded-md border border-white/10 bg-white/[0.02] p-3 space-y-2">
+              <div className="border border-white/10 bg-white/[0.02] p-3 space-y-2 rounded-none">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">Block Height</span>
-                  <span className="text-[11px] font-mono font-bold text-white">245,120,121</span>
+                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">BLOCK_HEIGHT</span>
+                  <span className="text-[11px] font-mono text-white">245,120,121</span>
                 </div>
-                <div className="w-full h-px bg-white/5" />
+                <div className="w-full h-px bg-white/10" />
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">Network</span>
-                  <span className="text-[11px] font-mono font-bold text-neon-blue">SOLANA</span>
+                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">NET_STATUS</span>
+                  <span className="text-[11px] font-mono text-neon-green animate-pulse">CONNECTED</span>
                 </div>
               </div>
 
               {/* Footer Info */}
               <div className="flex items-center justify-between px-1">
                 <span className="text-[9px] text-muted-foreground/60 font-mono">
-                  Vantage 2025: All rights reserved.
+                  SYS.READY
                 </span>
                 <a 
                   href="https://x.com/VantageBond" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-6 h-6 rounded border border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:border-white/30 hover:text-white hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+                  className="flex items-center justify-center w-6 h-6 border border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:border-white/30 hover:text-white transition-none rounded-none"
                 >
                   <svg viewBox="0 0 24 24" className="w-3 h-3 fill-current" aria-hidden="true">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -120,20 +116,13 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
           </SidebarFooter>
         </Sidebar>
 
-        <SidebarInset className="overflow-x-hidden">
-          <header className="sticky top-0 z-10 flex h-16 items-center gap-6 border-b border-white/10 bg-[#050505]/90 backdrop-blur-xl px-4 lg:px-6">
-            <SidebarTrigger className="text-muted-foreground hover:text-white transition-colors" />
+        <SidebarInset className="overflow-x-hidden bg-black">
+          <header className="sticky top-0 z-10 flex h-14 items-center gap-6 border-b border-white/10 bg-black/95 backdrop-blur-none px-4 lg:px-6">
+            <SidebarTrigger className="text-muted-foreground hover:text-white transition-colors rounded-none" />
             
-            <div className="flex items-center gap-2">
-              <div className="w-1 h-5 bg-white rounded-full" />
-              <span className="font-bold text-sm tracking-tight font-mono">MARKET TERMINAL</span>
-              <div className="hidden md:flex items-center gap-1.5 ml-4 px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                </span>
-                <span className="text-[9px] font-bold text-emerald-500 tracking-wider">INSTITUTIONAL LIQUIDITY: ONLINE</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-neon-green animate-pulse" />
+              <span className="font-bold text-sm tracking-tight font-mono text-white">TERMINAL_VIEW</span>
             </div>
 
             <div className="ml-auto flex items-center gap-6">
@@ -145,20 +134,20 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
                 <div className="hidden sm:block">
                   <GasPrice />
                 </div>
-                <div className="hidden sm:block w-px h-6 bg-white/10" />
+                <div className="hidden sm:block w-px h-4 bg-white/20" />
                 <a 
                   href="https://pump.fun/coin/EMyXs726t4oUL7yCH9kkXCpWp3SdpWRopuewaVYhpump"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:block px-4 py-1.5 rounded border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                  className="hidden sm:block px-4 py-1.5 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-neon-green/50 transition-all duration-300 group"
                 >
-                  <span className="text-[10px] font-bold font-mono text-white tracking-wider group-hover:text-neon-blue transition-colors">PUMP.FUN</span>
+                  <span className="text-[10px] font-bold font-mono text-white tracking-wider group-hover:text-neon-green transition-colors">PUMP.FUN_GATEWAY</span>
                 </a>
               </div>
             </div>
           </header>
 
-          <main className="flex-1 p-4 lg:p-6 space-y-6 bg-[#050505]">
+          <main className="flex-1 p-4 lg:p-6 space-y-6 bg-black">
             {children}
           </main>
         </SidebarInset>

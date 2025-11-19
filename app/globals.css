@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Deep Obsidian Theme - Premium Finance Vibe */
-  --background: oklch(0.01 0 0); /* Pure Black for Ethena vibe */
-  --foreground: oklch(0.98 0 0);
+  /* Updated theme to strict 2-color system (Black & White/Gray) with minimal accents */
+  --background: oklch(0.01 0 0); /* Pure Black */
+  --foreground: oklch(0.98 0 0); /* Pure White */
   
   --card: oklch(0.02 0 0);
   --card-foreground: oklch(0.98 0 0);
@@ -15,31 +15,31 @@
   --popover: oklch(0.02 0 0);
   --popover-foreground: oklch(0.98 0 0);
   
-  --primary: oklch(0.7 0.15 240); /* More electric/cyan blue */
-  --primary-foreground: oklch(0.05 0.05 240);
+  --primary: oklch(0.98 0 0); /* White as primary accent */
+  --primary-foreground: oklch(0.01 0 0);
   
-  --secondary: oklch(0.12 0.02 240);
+  --secondary: oklch(0.1 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   
-  --muted: oklch(0.12 0.02 240);
-  --muted-foreground: oklch(0.6 0.02 240);
+  --muted: oklch(0.1 0 0);
+  --muted-foreground: oklch(0.5 0 0);
   
-  --accent: oklch(0.12 0.02 240);
+  --accent: oklch(0.1 0 0);
   --accent-foreground: oklch(0.98 0 0);
   
-  --destructive: oklch(0.45 0.2 25);
+  --destructive: oklch(0.4 0.15 25);
   --destructive-foreground: oklch(0.98 0 0);
   
   --border: oklch(0.15 0 0);
   --input: oklch(0.15 0 0);
-  --ring: oklch(0.7 0.15 240);
+  --ring: oklch(0.98 0 0);
   
-  --radius: 0.5rem; /* Sharper corners like Ethena */
+  --radius: 0.5rem;
   
-  /* VANTAGE Premium Tokens */
-  --neon-blue: oklch(0.7 0.15 240);
-  --neon-green: oklch(0.75 0.15 150);
-  --neon-purple: oklch(0.65 0.2 290);
+  /* Removed neon colors, keeping only functional status colors */
+  --neon-blue: oklch(0.98 0 0); /* Replaced with white for clean look */
+  --neon-green: oklch(0.75 0.15 150); /* Kept for positive data only */
+  --neon-purple: oklch(0.98 0 0); /* Replaced with white */
   --glass-border: rgba(255, 255, 255, 0.06);
   --glass-bg: rgba(5, 5, 5, 0.6);
 }
@@ -134,20 +134,22 @@
 }
 
 @layer utilities {
+  /* Simplified glass panels to be cleaner and less "glowy" */
   .glass-panel {
-    @apply bg-black/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+    @apply bg-black border border-white/10 shadow-none;
   }
   
   .glass-card {
-    @apply bg-[#0A0A0A]/60 backdrop-blur-md border border-white/5 shadow-lg transition-all duration-300 hover:bg-[#0A0A0A]/80 hover:border-white/10 hover:shadow-xl;
+    @apply bg-black border border-white/10 transition-colors duration-200 hover:bg-white/5;
   }
   
+  /* Removed text-glow and border-glow for cleaner aesthetic */
   .text-glow {
-    text-shadow: 0 0 15px var(--neon-blue);
+    text-shadow: none;
   }
   
   .border-glow {
-    box-shadow: 0 0 10px -2px var(--neon-blue);
+    box-shadow: none;
   }
   
   .hover-fluid {

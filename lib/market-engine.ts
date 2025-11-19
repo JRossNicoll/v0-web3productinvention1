@@ -2,7 +2,6 @@ import { Asset, Order, Trade, UserState, OrderBook, OrderBookLevel, Notification
 import { TechnicalAnalysis } from './technical-analysis'
 import { RiskManagement } from './risk-management'
 
-// Initial seed data
 const INITIAL_ASSETS: Asset[] = [
   {
     id: "VBUT",
@@ -484,6 +483,558 @@ const INITIAL_ASSETS: Asset[] = [
     candles: [],
     orderBook: undefined
   },
+  {
+    id: "YOLO",
+    name: "Heyitsyolo",
+    symbol: "YOLO",
+    price: 205.85, // Derived from $20,585 PnL
+    change: 12.5,
+    volume: 452000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/Av3xWHJ5EsoLZag6pr7LKbrGgLRTaykXomDD5kBhL9YQ.png",
+    score: 98,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 20585.4,
+      winRate: 54, // 75/139 trades approx
+      rank: 1
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "DV",
+    name: "dv",
+    symbol: "DV",
+    price: 162.01,
+    change: 8.4,
+    volume: 380000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd.png",
+    score: 96,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 16201.6,
+      winRate: 47, // 113/242
+      rank: 2
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "CXLT",
+    name: "cxltures",
+    symbol: "CXLT",
+    price: 122.80,
+    change: 15.2,
+    volume: 290000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/3ZtwP8peTwTfLUF1rgUQgUxwyeHCxfmoELXghQzKqnAJ.png",
+    score: 94,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 12280.7,
+      winRate: 35,
+      rank: 3
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "POLAR",
+    name: "Polar",
+    symbol: "POLAR",
+    price: 104.16,
+    change: 5.7,
+    volume: 210000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/4S9U8HckRngscHWrW418cG6Suw62dhEZzmyrT2hxSye5.png",
+    score: 92,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 10416.8,
+      winRate: 55,
+      rank: 4
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "DANNY",
+    name: "Danny",
+    symbol: "DANNY",
+    price: 80.04,
+    change: -2.1,
+    volume: 180000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/9FNz4MjPUmnJqTf6yEDbL1D4SsHVh7uA8zRHhR5K138r.png",
+    score: 90,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 8004.3,
+      winRate: 49,
+      rank: 5
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "SLOPPY",
+    name: "Sloppy",
+    symbol: "SLOP",
+    price: 75.33,
+    change: 4.2,
+    volume: 165000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/86AEJExyjeNNgcp7GrAvCXTDicf5aGWgoERbXFiG1EdD.png",
+    score: 89,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 7533.8,
+      winRate: 34,
+      rank: 6
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "BASITA",
+    name: "Basita",
+    symbol: "BAS",
+    price: 68.37,
+    change: 1.1,
+    volume: 150000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/3kebnKw7cPdSkLRfiMEALyZJGZ4wdiSRvmoN4rD1yPzV.png",
+    score: 88,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 6837.4,
+      winRate: 54,
+      rank: 7
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "OTTA",
+    name: "Otta",
+    symbol: "OTTA",
+    price: 65.76,
+    change: 9.8,
+    volume: 145000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/As7HjL7dzzvbRbaD3WCun47robib2kmAKRXMvjHkSMB5.png",
+    score: 87,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 6576.6,
+      winRate: 45,
+      rank: 8
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "COOKER",
+    name: "Cooker",
+    symbol: "COOK",
+    price: 56.81,
+    change: 3.4,
+    volume: 130000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/8deJ9xeUvXSJwicYptA9mHsU2rN2pDx37KWzkDkEXhU6.png",
+    score: 86,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 5681.3,
+      winRate: 64,
+      rank: 9
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "TIL",
+    name: "TIL",
+    symbol: "TIL",
+    price: 56.68,
+    change: -1.5,
+    volume: 128000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/EHg5YkU2SZBTvuT87rUsvxArGp3HLeye1fXaSDfuMyaf.png",
+    score: 85,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 5668.3,
+      winRate: 40,
+      rank: 10
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "CLASSIC",
+    name: "Classic",
+    symbol: "CLAS",
+    price: 53.97,
+    change: 2.2,
+    volume: 120000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/DsqRyTUh1R37asYcVf1KdX4CNnz5DKEFmnXvgT4NfTPE.png",
+    score: 84,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 5397.3,
+      winRate: 49,
+      rank: 11
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "YOUNIZ",
+    name: "YOUNIZ",
+    symbol: "YOU",
+    price: 52.58,
+    change: 6.7,
+    volume: 115000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/EKDDjxzJ39Bjkr47NiARGJDKFVxiiV9WNJ5XbtEhPEXP.png",
+    score: 83,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 5258.6,
+      winRate: 40,
+      rank: 12
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "DAUMEN",
+    name: "Daumen",
+    symbol: "DAU",
+    price: 47.59,
+    change: 1.8,
+    volume: 110000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/8MaVa9kdt3NW4Q5HyNAm1X5LbR8PQRVDc1W8NMVK88D5.png",
+    score: 82,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 4759.5,
+      winRate: 66,
+      rank: 13
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "MRFROG",
+    name: "Mr. Frog",
+    symbol: "FROG",
+    price: 43.34,
+    change: 12.1,
+    volume: 105000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/4DdrfiDHpmx55i4SPssxVzS9ZaKLb8qr45NKY9Er9nNh.png",
+    score: 81,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 4334.9,
+      winRate: 96,
+      rank: 14
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "INSYDER",
+    name: "Insyder",
+    symbol: "INSY",
+    price: 42.72,
+    change: 4.5,
+    volume: 100000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/G3g1CKqKWSVEVURZDNMazDBv7YAhMNTjhJBVRTiKZygk.png",
+    score: 80,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 4272.3,
+      winRate: 44,
+      rank: 15
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "MONEY",
+    name: "MoneyMaykah",
+    symbol: "MONEY",
+    price: 40.23,
+    change: 3.2,
+    volume: 95000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/3i8akM4xfSX9WKFB5bQ61fmiYkeKQEFqvdMEyu6pSEk9.png",
+    score: 79,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 4023.3,
+      winRate: 38,
+      rank: 16
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "NACH",
+    name: "Nach",
+    symbol: "NACH",
+    price: 28.16,
+    change: -0.5,
+    volume: 80000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/9jyqFiLnruggwNn4EQwBNFXwpbLM9hrA4hV59ytyAVVz.png",
+    score: 78,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 2816.5,
+      winRate: 83,
+      rank: 17
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "ABSOL",
+    name: "Absol",
+    symbol: "ABS",
+    price: 26.29,
+    change: 1.4,
+    volume: 75000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/BXNiM7pqt9Ld3b2Hc8iT3mA5bSwoe9CRrtkSUs15SLWN.png",
+    score: 77,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 2629.3,
+      winRate: 35,
+      rank: 18
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "FERB",
+    name: "Ferb",
+    symbol: "FERB",
+    price: 23.51,
+    change: 2.8,
+    volume: 70000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/m7Kaas3Kd8FHLnCioSjCoSuVDReZ6FDNBVM6HTNYuF7.png",
+    score: 76,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 2351.0,
+      winRate: 35,
+      rank: 19
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "HAIL",
+    name: "Hail",
+    symbol: "HAIL",
+    price: 22.64,
+    change: 5.1,
+    volume: 68000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/HA1L7GhQfypSRdfBi3tCkkCVEdEcBVYqBSQCENCrwPuB.png",
+    score: 75,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 2264.3,
+      winRate: 89,
+      rank: 20
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "JB",
+    name: "JB",
+    symbol: "JB",
+    price: 21.56,
+    change: 1.9,
+    volume: 65000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/7dP8DmRka5rmQti4zEEDjdAyaQyvFsPkcXMjEKJucqCu.png",
+    score: 74,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 2156.5,
+      winRate: 81,
+      rank: 21
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "KADEN",
+    name: "Kadenox",
+    symbol: "KAD",
+    price: 18.18,
+    change: -1.2,
+    volume: 60000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/3pZ59YENxDAcjaKa3sahZJBcgER4rGYi4v6BpPurmsGj.png",
+    score: 73,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 1818.3,
+      winRate: 30,
+      rank: 22
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "ORANGE",
+    name: "Orange",
+    symbol: "ORN",
+    price: 17.68,
+    change: 0.8,
+    volume: 58000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/96sErVjEN7LNJ6Uvj63bdRWZxNuBngj56fnT9biHLKBf.png",
+    score: 72,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 1768.0,
+      winRate: 50,
+      rank: 23
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "BAG",
+    name: "BagCalls",
+    symbol: "BAG",
+    price: 14.36,
+    change: 3.5,
+    volume: 55000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/4AHgEkTsGqY77qtde4UJn9yZCrbGcM7UM3vjT3qM4G5H.png",
+    score: 71,
+    platforms: ["twitter", "telegram"],
+    kolStats: {
+      monthlyPnL: 1436.0,
+      winRate: 100,
+      rank: 24
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "MOG",
+    name: "mog",
+    symbol: "MOG",
+    price: 14.22,
+    change: 2.1,
+    volume: 54000,
+    category: "KOL",
+    image: "https://cdn.kolscan.io/profiles/EzLywbxhxsAiNc7C9EY8fa9qZNUrMkayozWfHu7hbPJD.png",
+    score: 70,
+    platforms: ["twitter"],
+    kolStats: {
+      monthlyPnL: 1422.4,
+      winRate: 40,
+      rank: 25
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "JIJO",
+    name: "Jijo",
+    category: "KOL",
+    price: 8.92,
+    change: 5.5,
+    volume: 55,
+    marketCap: 1313,
+    score: 65,
+    holders: 130,
+    image: "https://cdn.kolscan.io/profiles/4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk.png",
+    platforms: ["twitter", "telegram"],
+    socials: {
+      twitter: "https://twitter.com/jijo_trades",
+      website: "https://kolscan.io/account/4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk"
+    },
+    kolStats: {
+      rank: 26,
+      monthlyPnL: "+8.92 SOL",
+      winRate: "18/6",
+      totalProfit: "$1,313"
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  },
+  {
+    id: "AL4N",
+    name: "Al4n",
+    category: "KOL",
+    price: 8.50,
+    change: 2.9,
+    volume: 50,
+    marketCap: 1251,
+    score: 64,
+    holders: 120,
+    image: "https://cdn.kolscan.io/profiles/2YJbcB9G8wePrpVBcT31o8JEed6L3abgyCjt5qkJMymV.png",
+    platforms: ["twitter"],
+    socials: {
+      twitter: "https://twitter.com/al4n_sol",
+      website: "https://kolscan.io/account/2YJbcB9G8wePrpVBcT31o8JEed6L3abgyCjt5qkJMymV"
+    },
+    kolStats: {
+      rank: 27,
+      monthlyPnL: "+8.50 SOL",
+      winRate: "55/49",
+      totalProfit: "$1,251"
+    },
+    history: [],
+    candles: [],
+    orderBook: undefined
+  }
 ]
 
 type MarketProfile = 'ETH_LIKE' | 'AI_BOOM' | 'RECOVERY' | 'MEME_VOLATILITY' | 'EXPONENTIAL' | 'HIGH_BETA'
@@ -494,7 +1045,34 @@ const ASSET_PROFILES: Record<string, MarketProfile> = {
   "MZUC": "RECOVERY",
   "EMUS": "MEME_VOLATILITY",
   "JHUA": "EXPONENTIAL",
-  "CWOO": "HIGH_BETA"
+  "CWOO": "HIGH_BETA",
+  "YOLO": "HIGH_BETA",
+  "DV": "HIGH_BETA",
+  "CXLT": "MEME_VOLATILITY",
+  "POLAR": "HIGH_BETA",
+  "DANNY": "HIGH_BETA",
+  "SLOPPY": "MEME_VOLATILITY",
+  "BASITA": "HIGH_BETA",
+  "OTTA": "HIGH_BETA",
+  "COOKER": "HIGH_BETA",
+  "TIL": "HIGH_BETA",
+  "CLASSIC": "HIGH_BETA",
+  "YOUNIZ": "HIGH_BETA",
+  "DAUMEN": "HIGH_BETA",
+  "MRFROG": "MEME_VOLATILITY",
+  "INSYDER": "HIGH_BETA",
+  "MONEY": "HIGH_BETA",
+  "NACH": "HIGH_BETA",
+  "ABSOL": "HIGH_BETA",
+  "FERB": "HIGH_BETA",
+  "HAIL": "HIGH_BETA",
+  "JB": "HIGH_BETA",
+  "KADEN": "HIGH_BETA",
+  "ORANGE": "HIGH_BETA",
+  "BAG": "HIGH_BETA",
+  "MOG": "MEME_VOLATILITY",
+  "JIJO": "HIGH_BETA",
+  "AL4N": "HIGH_BETA",
 }
 
 export class MarketEngine {
@@ -585,43 +1163,65 @@ export class MarketEngine {
     
     if (saved) {
       const parsed = JSON.parse(saved)
-      parsed.forEach((savedAsset: Asset) => {
-        const initialAsset = INITIAL_ASSETS.find(a => a.id === savedAsset.id)
-        
-        // Target: $40k / 150 / 6 assets = ~44 per asset
-        const baseVolume = 30 + Math.random() * 20 // 30-50 range
-        
-        let volume = savedAsset.volume
-        if (volume > 100) { 
-            volume = baseVolume
-        }
+      const savedAssetsMap = new Map(parsed.map((a: Asset) => [a.id, a]))
 
-        const mergedAsset = {
-          ...savedAsset,
-          volume, 
-          marketCap: volume * 150, 
-          ...(initialAsset ? {
-            name: initialAsset.name,
-            image: initialAsset.image,
-            bio: initialAsset.bio,
-            socials: initialAsset.socials,
-            platforms: initialAsset.platforms,
-            holders: initialAsset.holders,
-            sectorDominance: initialAsset.sectorDominance,
-            sentimentScore: initialAsset.sentimentScore,
-            riskRating: initialAsset.riskRating,
-            smartMoneyFlow: initialAsset.smartMoneyFlow
-          } : {})
-        }
+      INITIAL_ASSETS.forEach(initialAsset => {
+        const savedAsset = savedAssetsMap.get(initialAsset.id)
 
-        if (!mergedAsset.orderBook) {
-          mergedAsset.orderBook = this.generateOrderBook(mergedAsset.price, mergedAsset.volume)
+        if (savedAsset) {
+            const mergedAsset = {
+              ...savedAsset,
+              kolStats: initialAsset.kolStats, // Always update KOL stats
+              image: initialAsset.image, // Always update image
+              socials: initialAsset.socials, // Always update socials
+              platforms: initialAsset.platforms, // Always update platforms
+              // Keep existing data like history, candles unless explicitly needed to reset
+            }
+
+            // Target: $40k / 150 / 6 assets = ~44 per asset
+            const baseVolume = 30 + Math.random() * 20 // 30-50 range
+            
+            let volume = savedAsset.volume
+            if (volume === undefined || volume < 1) { // Fallback for potentially missing or zero volume
+                volume = baseVolume
+            }
+
+            // Ensure marketCap is derived from volume if not present or significantly outdated
+            const marketCap = (savedAsset.marketCap && savedAsset.marketCap > 0) ? savedAsset.marketCap : volume * 150;
+            
+            mergedAsset.volume = volume;
+            mergedAsset.marketCap = marketCap;
+
+            if (!mergedAsset.orderBook) {
+            mergedAsset.orderBook = this.generateOrderBook(mergedAsset.price, mergedAsset.volume)
+            }
+            
+            // Ensure candles exist
+            if (!mergedAsset.candles || mergedAsset.candles.length === 0) {
+                mergedAsset.candles = this.generateInitialCandles(mergedAsset.price, mergedAsset.volume, mergedAsset.id)
+            }
+            
+            this.assets.set(mergedAsset.id, mergedAsset)
+            this.assetTrends.set(mergedAsset.id, (Math.random() - 0.5) * 0.002) 
+        } else {
+            const trend = (Math.random() - 0.5) * 0.002
+            this.assetTrends.set(initialAsset.id, trend)
+
+            const startVolume = 30 + Math.random() * 20
+
+            const candles = this.generateInitialCandles(initialAsset.price, startVolume, initialAsset.id)
+            
+            const history = candles.slice(-50).map(c => ({ time: c.time, price: c.close }))
+
+            this.assets.set(initialAsset.id, { 
+            ...initialAsset, 
+            volume: startVolume,
+            marketCap: startVolume * 150,
+            history,
+            candles,
+            orderBook: this.generateOrderBook(initialAsset.price, startVolume)
+            })
         }
-        
-        mergedAsset.candles = this.generateInitialCandles(mergedAsset.price, mergedAsset.volume, mergedAsset.id)
-        
-        this.assets.set(mergedAsset.id, mergedAsset)
-        this.assetTrends.set(mergedAsset.id, (Math.random() - 0.5) * 0.002) 
       })
     } else {
       INITIAL_ASSETS.forEach(a => {

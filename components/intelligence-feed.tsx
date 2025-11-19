@@ -39,21 +39,21 @@ export function IntelligenceFeed() {
   if (!isGodMode) return null
 
   return (
-    <Card className="fixed bottom-6 right-6 w-80 z-50 border-neon-blue/30 bg-black/90 backdrop-blur-xl shadow-[0_0_30px_-10px_rgba(0,243,255,0.2)] animate-in slide-in-from-bottom-10 fade-in duration-500">
-      <CardHeader className="py-3 px-4 border-b border-neon-blue/20 bg-neon-blue/5">
+    <Card className="fixed bottom-6 right-6 w-80 z-50 border border-white/20 bg-black shadow-none animate-in slide-in-from-bottom-10 fade-in duration-500">
+      <CardHeader className="py-3 px-4 border-b border-white/10 bg-white/[0.02]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShieldAlert className="w-4 h-4 text-neon-blue animate-pulse" />
-            <CardTitle className="text-xs font-bold font-mono uppercase tracking-widest text-neon-blue">
+            <ShieldAlert className="w-4 h-4 text-white animate-pulse" />
+            <CardTitle className="text-xs font-bold font-mono uppercase tracking-widest text-white">
               Live Intelligence
             </CardTitle>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-blue"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
-            <span className="text-[9px] font-mono text-neon-blue/70">LIVE FEED</span>
+            <span className="text-[9px] font-mono text-muted-foreground">LIVE FEED</span>
           </div>
         </div>
       </CardHeader>
@@ -64,15 +64,12 @@ export function IntelligenceFeed() {
               <div key={item.id} className="p-3 hover:bg-white/5 transition-colors group">
                 <div className="flex items-start justify-between mb-1">
                   <div className="flex items-center gap-2">
-                    {item.type === 'whale' && <Wallet className="w-3 h-3 text-purple-400" />}
-                    {item.type === 'insider' && <Lock className="w-3 h-3 text-amber-400" />}
-                    {item.type === 'accumulation' && <Activity className="w-3 h-3 text-emerald-400" />}
-                    {item.type === 'bridge' && <Globe className="w-3 h-3 text-blue-400" />}
+                    {item.type === 'whale' && <Wallet className="w-3 h-3 text-white" />}
+                    {item.type === 'insider' && <Lock className="w-3 h-3 text-white" />}
+                    {item.type === 'accumulation' && <Activity className="w-3 h-3 text-white" />}
+                    {item.type === 'bridge' && <Globe className="w-3 h-3 text-white" />}
                     <span className={cn(
-                      "text-[10px] font-bold font-mono uppercase",
-                      item.type === 'whale' ? "text-purple-400" :
-                      item.type === 'insider' ? "text-amber-400" :
-                      item.type === 'bridge' ? "text-blue-400" : "text-emerald-400"
+                      "text-[10px] font-bold font-mono uppercase text-white",
                     )}>
                       {item.type === 'bridge' ? 'INSTITUTIONAL BRIDGE' : `${item.type} DETECTED`}
                     </span>
@@ -81,20 +78,20 @@ export function IntelligenceFeed() {
                     {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                   </span>
                 </div>
-                <p className="text-[11px] text-white/90 font-medium leading-snug mb-1.5">
+                <p className="text-[11px] text-muted-foreground font-medium leading-snug mb-1.5">
                   {item.message}
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-white/60">
+                  <div className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground">
                     <span>{item.asset}</span>
                     <span className="text-white/20">|</span>
                     <span className="text-white">{item.amount}</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">
+                  <div className="flex items-center gap-1 bg-white/5 px-1.5 py-0.5 rounded-none border border-white/10">
                     <span className="text-[9px] text-muted-foreground uppercase">Conf.</span>
                     <span className={cn(
                       "text-[9px] font-bold",
-                      item.confidence > 90 ? "text-neon-green" : "text-yellow-400"
+                      item.confidence > 90 ? "text-neon-green" : "text-white"
                     )}>
                       {item.confidence}%
                     </span>

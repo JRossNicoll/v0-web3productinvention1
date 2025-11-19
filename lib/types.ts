@@ -27,6 +27,12 @@ export interface Asset {
   recentActivity?: ActivityItem[]
   insiderTrades?: InsiderTrade[]
   news?: NewsItem[]
+  kolStats?: {
+    rank: number
+    monthlyPnL: string
+    winRate: string
+    totalProfit: string
+  }
 }
 
 export interface Order {
