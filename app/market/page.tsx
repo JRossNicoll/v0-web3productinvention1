@@ -1,15 +1,12 @@
 "use client"
-
-import { useState, useEffect } from "react"
-import { useSearchParams } from 'next/navigation'
-import { Card, CardContent } from "@/components/ui/card"
+import { useSearchParams } from "next/navigation"
 import { MarketChart } from "@/components/market-chart"
 import { AssetTable } from "@/components/asset-table"
 import { TopPerformers } from "@/components/top-performers"
 import { MarketStats } from "@/components/market-stats"
 import { PortfolioView } from "@/components/portfolio-view"
 import { NativeCoinBanner } from "@/components/native-coin-banner"
-import { DollarSign } from 'lucide-react'
+import { PresaleView } from "@/components/presale-view"
 import { Suspense } from "react"
 import MarketLoading from "./loading"
 
@@ -55,9 +52,9 @@ function MarketContent() {
         </div>
       )}
 
-      {view === "portfolio" && (
-        <PortfolioView />
-      )}
+      {view === "portfolio" && <PortfolioView />}
+
+      {(view === "prime" || view === "presale") && <PresaleView />}
     </div>
   )
 }

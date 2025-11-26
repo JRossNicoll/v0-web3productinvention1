@@ -1,25 +1,24 @@
 "use client"
 
-import { useState } from "react"
-import { Activity, Users, DollarSign, BarChart3, ChevronRight, Twitter, Crown } from 'lucide-react'
-import { 
-  Sidebar, 
-  SidebarContent, 
-  SidebarHeader, 
-  SidebarMenu, 
-  SidebarMenuItem, 
+import type React from "react"
+import { Activity, Users, DollarSign, BarChart3, Crown } from "lucide-react"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
   SidebarMenuButton,
   SidebarProvider,
   SidebarInset,
   SidebarTrigger,
   SidebarFooter,
-  SidebarSeparator
+  SidebarSeparator,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation"
 import { GasPrice } from "@/components/gas-price"
 import Image from "next/image"
-import { PumpFunWidget } from "@/components/pump-fun-widget"
 import { GodModeToggle } from "@/components/god-mode-toggle"
 import { IntelligenceFeed } from "@/components/intelligence-feed"
 
@@ -28,7 +27,7 @@ const MENU_ITEMS = [
   { icon: BarChart3, label: "ASSET_LIST", href: "/market?view=assets" },
   { icon: Users, label: "LEADERBOARD", href: "/market?view=leaderboard" },
   { icon: DollarSign, label: "PORTFOLIO", href: "/market?view=portfolio" },
-  { icon: Crown, label: "VANTAGE_PRIME", href: "/market?view=prime", badge: "WAITLIST" },
+  { icon: Crown, label: "VANTAGE_PRIME", href: "/market?view=prime", badge: "LIVE" },
 ]
 
 export default function MarketLayout({ children }: { children: React.ReactNode }) {
@@ -39,22 +38,19 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
       <div className="min-h-screen bg-black text-foreground flex w-full font-mono selection:bg-neon-green/20 selection:text-neon-green">
         <Sidebar variant="inset" collapsible="icon" className="border-r border-white/10 bg-black">
           <SidebarHeader className="border-b border-white/10 p-4 bg-black">
-            <Link href="/market" className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center hover:opacity-80 transition-opacity">
+            <Link
+              href="/market"
+              className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center hover:opacity-80 transition-opacity"
+            >
               <div className="relative w-8 h-8">
-                <Image 
-                  src="/placeholder-logo.svg" 
-                  alt="Vantage Logo" 
-                  fill 
-                  className="object-contain invert"
-                  priority
-                />
+                <Image src="/placeholder-logo.svg" alt="Vantage Logo" fill className="object-contain invert" priority />
               </div>
               <div className="group-data-[collapsible=icon]:hidden">
                 <div className="font-semibold text-lg tracking-tight text-white font-sans">Vantage</div>
               </div>
             </Link>
           </SidebarHeader>
-          
+
           <SidebarContent className="p-0 bg-black">
             <SidebarMenu className="gap-0">
               {MENU_ITEMS.map((item) => (
@@ -86,23 +82,25 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
             <div className="flex flex-col gap-4 group-data-[collapsible=icon]:hidden">
               <div className="border border-white/10 bg-white/[0.02] p-3 space-y-2 rounded-none">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">BLOCK_HEIGHT</span>
-                  <span className="text-[11px] font-mono text-white">245,120,121</span>
+                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">
+                    BLOCK_HEIGHT
+                  </span>
+                  <span className="text-[11px] font-mono text-white">19,245,121</span>
                 </div>
                 <div className="w-full h-px bg-white/10" />
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">NET_STATUS</span>
+                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">
+                    NET_STATUS
+                  </span>
                   <span className="text-[11px] font-mono text-neon-green animate-pulse">CONNECTED</span>
                 </div>
               </div>
 
               {/* Footer Info */}
               <div className="flex items-center justify-between px-1">
-                <span className="text-[9px] text-muted-foreground/60 font-mono">
-                  SYS.READY
-                </span>
-                <a 
-                  href="https://x.com/VantageBond" 
+                <span className="text-[9px] text-muted-foreground/60 font-mono">SYS.READY</span>
+                <a
+                  href="https://x.com/VantageBond"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-6 h-6 border border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:border-white/30 hover:text-white transition-none rounded-none"
@@ -119,7 +117,7 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
         <SidebarInset className="overflow-x-hidden bg-black">
           <header className="sticky top-0 z-10 flex h-14 items-center gap-6 border-b border-white/10 bg-black/95 backdrop-blur-none px-4 lg:px-6">
             <SidebarTrigger className="text-muted-foreground hover:text-white transition-colors rounded-none" />
-            
+
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-neon-green animate-pulse" />
               <span className="font-bold text-sm tracking-tight font-mono text-white">TERMINAL_VIEW</span>
@@ -130,29 +128,17 @@ export default function MarketLayout({ children }: { children: React.ReactNode }
                 <div className="hidden md:block">
                   <GodModeToggle />
                 </div>
-                
+
                 <div className="hidden sm:block">
                   <GasPrice />
                 </div>
-                <div className="hidden sm:block w-px h-4 bg-white/20" />
-                <a 
-                  href="https://pump.fun/coin/EMyXs726t4oUL7yCH9kkXCpWp3SdpWRopuewaVYhpump"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden sm:block px-3 py-1.5 bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-full"
-                >
-                  <span className="text-[10px] font-bold font-sans tracking-wide">PUMP.FUN</span>
-                </a>
               </div>
             </div>
           </header>
 
-          <main className="flex-1 p-4 lg:p-6 space-y-6 bg-black">
-            {children}
-          </main>
+          <main className="flex-1 p-4 lg:p-6 space-y-6 bg-black">{children}</main>
         </SidebarInset>
-        
-        <PumpFunWidget />
+
         <IntelligenceFeed />
       </div>
     </SidebarProvider>
