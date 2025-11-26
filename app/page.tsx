@@ -1,6 +1,7 @@
 import { VantageScore } from "@/components/vantage-score"
 import { TrendingSection } from "@/components/trending-section"
 import { PeopleTicker } from "@/components/people-ticker"
+import { ContractAddressDisplay } from "@/components/contract-address-display"
 import Link from "next/link"
 import { Globe } from "lucide-react"
 import Image from "next/image"
@@ -91,6 +92,8 @@ export default function Page() {
                   <span className="tracking-wider">ETHEREUM MAINNET</span>
                 </div>
               </div>
+
+              <ContractAddressDisplay />
 
               <div className="mt-2">
                 <TrendingSection />
