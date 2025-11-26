@@ -1,7 +1,9 @@
+import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Vantage",
   description: "The world's first decentralized human equity marketplace.",
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -33,10 +35,9 @@ export default function RootLayout({
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_top_center,_var(--tw-gradient-stops))] from-blue-950/20 via-background to-background pointer-events-none z-[-1]" />
         <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] opacity-15 pointer-events-none z-[-1]" />
         <div className="fixed top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50 z-50" />
-        
-        <Providers>
-          {children}
-        </Providers>
+
+        <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   )
